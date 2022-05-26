@@ -169,8 +169,9 @@ def add_meetups():
 
 @app.route('/add_meetups', methods=['POST'])
 def add_meetups_post():
-    title = request.form.get('title')
-    description = request.form.get('description')
+    meet_json = request.get_json()
+    title = meet_json['title']
+    description = meet_json['description']
 
     new_meeting = meetups(title = title, description = description)
     db.session.add(new_meeting)
