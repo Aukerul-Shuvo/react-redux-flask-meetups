@@ -20,7 +20,8 @@ function App() {
     const handleSubmit = async(event) => {
         event.preventDefault();
         window.location = "http://localhost:3000/";
-        console.log("handleSubmit Runs");
+        
+        
         var title=event.target.title.value;
         var description= event.target.description.value;
         const response= await axios
