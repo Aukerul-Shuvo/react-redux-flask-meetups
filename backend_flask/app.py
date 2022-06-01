@@ -169,9 +169,8 @@ def add_meetups():
 
 @app.route('/add_meetups', methods=['POST'])
 def add_meetups_post():
-    meet_json = request.get_json()
-    title = meet_json['title']
-    description = meet_json['description']
+    title = request.form.get('title')
+    description = request.form.get('description')
 
     new_meeting = meetups(title = title, description = description)
     db.session.add(new_meeting)
@@ -189,6 +188,8 @@ def meetup_details():
         description = item
     return render_template('meetup-details.html', title = title, description = description)
 
+def test():
+    return 44
 if __name__ == '__main__':
    db.create_all()
    app.run(debug = True, host='0.0.0.0', port=5000)
